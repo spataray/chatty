@@ -47,7 +47,10 @@ header {
 
 /* Reader Styles */
 .reader-mode {
-    background: #e5ddd5; /* Typical WhatsApp-like background */
+    background-color: #e5ddd5;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     height: 100vh;
 }
 

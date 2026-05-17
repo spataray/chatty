@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             storyData = data;
             titleDisplay.textContent = data.title;
+            
+            // Apply background image if it exists
+            if (data.background) {
+                document.body.style.backgroundImage = `url('${data.background}')`;
+            }
         })
         .catch(err => {
             console.error('Error loading story:', err);
