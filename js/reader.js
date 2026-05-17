@@ -19,8 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const storyMenu = document.getElementById('story-menu');
     const menuStoryList = document.getElementById('menu-story-list');
 
+    const typingIndicator = document.getElementById('typing-indicator');
+    const fakeInput = document.getElementById('fake-input');
+
     let storyData = null;
     let currentIndex = -1;
+    let isWaiting = false;
 
     if (!storyFile) {
         window.location.href = 'index.html';
@@ -64,10 +68,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function addMessage() {
-        if (!storyData || currentIndex >= storyData.messages.length - 1) return;
+        if (!storyData || currentIndex >= storyData.messages.length - 1 || isWaiting) return;
 
         currentIndex++;
         const msg = storyData.messages[currentIndex];
+        
+        // Check for delay/wait
+        if (msg.wait) {
+            isWaiting = true;
+            fakeInput.textContent = "Wait for response...";
+            setTimeout(() => {
+                isWaiting = false;
+                fakeInput.textContent = "Type a message...";
+                renderMessage(msg);
+                // Trigger auto-reveal for the delayed message
+            }, msg.wait * 1000); // Wait in seconds
+            return;
+        }
+
+        renderMessage(msg);
+    }
+
+    function renderMessage(msg) {
         const msgDiv = document.createElement('div');
 
         if (msg.type === 'system') {
@@ -76,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const char = storyData.characters[msg.char];
             
-            // Show notification if it's an incoming message (left side)
             if (char.side === 'left') {
                 showNotification(char, msg.text);
             }
@@ -93,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         chatWindow.appendChild(msgDiv);
-        window.scrollTo(0, document.body.scrollHeight);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
 
         tapOverlay.classList.add('tapped');
         setTimeout(() => tapOverlay.classList.remove('tapped'), 100);

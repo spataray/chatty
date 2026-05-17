@@ -22,6 +22,21 @@
     { "char": "me", "text": "Stop joking. I'm calling the police." },
     { "char": "stranger", "text": "The police won't reach here in time." },
     { "type": "system", "content": "A loud thud echoes from the hallway." },
-    { "char": "me", "text": "Wait... I heard something." }
+    { "char": "me", "text": "Wait... I heard something." },
+    { "char": "stranger", "text": "I told you. You shouldn't have opened the door for that delivery earlier." },
+    { "char": "me", "text": "How did you know about the delivery??" },
+    { "char": "stranger", "text": "I was the one who handed you the bag.", "wait": 5 },
+    { "char": "me", "text": "No... the guy had a mask on. And he didn't say anything." },
+    { "char": "stranger", "text": "Check the bag again. Look at the bottom." },
+    { "type": "system", "content": "You walk slowly to the kitchen. The paper bag is still on the counter." },
+    { "char": "me", "text": "There's just a receipt..." },
+    { "char": "me", "text": "Wait. This isn't a receipt." },
+    { "char": "stranger", "text": "It's a polaroid, isn't it?", "wait": 3 },
+    { "char": "me", "text": "It's a picture of me... sleeping... in this room." },
+    { "char": "me", "text": "FROM TEN MINUTES AGO." },
+    { "char": "stranger", "text": "You look so peaceful when you're not scared." },
+    { "char": "me", "text": "I'm locking the bedroom door. The police are on their way." },
+    { "char": "stranger", "text": "The lock won't help. I'm already inside the closet." },
+    { "type": "system", "content": "The closet door creaks open." }
   ]
 }
