@@ -1,9 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Set language to user's phone/browser default
+    document.documentElement.lang = navigator.language || 'en';
+
     const urlParams = new URLSearchParams(window.location.search);
     const storyFile = urlParams.get('story');
     const chatWindow = document.getElementById('chat-window');
     const titleDisplay = document.getElementById('title-display');
     const tapOverlay = document.getElementById('tap-overlay');
+
+    // UI Elements for Notifications & Menu
+    const notifBanner = document.getElementById('notification-banner');
+    const notifName = document.getElementById('notif-name');
+    const notifMsg = document.getElementById('notif-msg');
+    const notifAvatar = document.getElementById('notif-avatar');
+    
+    const menuBtn = document.getElementById('menu-btn');
+    const closeMenu = document.getElementById('close-menu');
+    const storyMenu = document.getElementById('story-menu');
+    const menuStoryList = document.getElementById('menu-story-list');
 
     let storyData = null;
     let currentIndex = -1;
@@ -13,21 +27,41 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
+    // Load main story
     fetch(`stories/${storyFile}`)
         .then(res => res.json())
         .then(data => {
             storyData = data;
             titleDisplay.textContent = data.title;
-            
-            // Apply background image if it exists
             if (data.background) {
                 document.body.style.backgroundImage = `url('${data.background}')`;
             }
-        })
-        .catch(err => {
-            console.error('Error loading story:', err);
-            titleDisplay.textContent = "Error loading story";
         });
+
+    // Load story index for menu
+    fetch('stories/story-index.json')
+        .then(res => res.json())
+        .then(stories => {
+            stories.forEach(story => {
+                const item = document.createElement('div');
+                item.className = 'menu-item';
+                item.textContent = story.title;
+                item.onclick = () => window.location.href = `reader.html?story=${story.file}`;
+                menuStoryList.appendChild(item);
+            });
+        });
+
+    function showNotification(char, text) {
+        notifName.textContent = char.name;
+        notifMsg.textContent = text;
+        notifAvatar.src = char.avatar;
+        notifBanner.classList.remove('hidden');
+        
+        // Hide after 3 seconds
+        setTimeout(() => {
+            notifBanner.classList.add('hidden');
+        }, 3000);
+    }
 
     function addMessage() {
         if (!storyData || currentIndex >= storyData.messages.length - 1) return;
@@ -41,6 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
             msgDiv.textContent = msg.content;
         } else {
             const char = storyData.characters[msg.char];
+            
+            // Show notification if it's an incoming message (left side)
+            if (char.side === 'left') {
+                showNotification(char, msg.text);
+            }
+
             msgDiv.className = `message bubble-container ${char.side}`;
             msgDiv.innerHTML = `
                 ${char.side === 'left' ? `<img src="${char.avatar}" class="avatar">` : ''}
@@ -55,10 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
         chatWindow.appendChild(msgDiv);
         window.scrollTo(0, document.body.scrollHeight);
 
-        // Visual feedback for tap
         tapOverlay.classList.add('tapped');
         setTimeout(() => tapOverlay.classList.remove('tapped'), 100);
     }
 
-    document.body.addEventListener('click', addMessage);
+    // Menu Controls
+    menuBtn.onclick = (e) => {
+        e.stopPropagation();
+        storyMenu.classList.toggle('hidden');
+    };
+    closeMenu.onclick = () => storyMenu.classList.add('hidden');
+    document.body.onclick = (e) => {
+        if (!storyMenu.contains(e.target) && e.target !== menuBtn) {
+            storyMenu.classList.add('hidden');
+        }
+    };
+
+    // Interaction to progress story
+    document.body.addEventListener('click', (e) => {
+        if (storyMenu.classList.contains('hidden')) {
+            addMessage();
+        }
+    });
 });

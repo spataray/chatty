@@ -4,13 +4,19 @@ Chatty is a lightweight, web-based interactive "chat fiction" reader. It allows 
 
 ## Main Technologies
 - **HTML5 & CSS3**: For structure and styling.
-- **JavaScript (Vanilla)**: Handles story loading, state management, and the interactive "tap-to-read" mechanic.
+- **JavaScript (Vanilla)**: Handles story loading, state management, the interactive "tap-to-read" mechanic, and dynamic notifications.
 - **JSON**: Serves as the database for story metadata and message content.
+- **System Fonts**: Uses a native font stack for universal language support (CJK, Arabic, etc.).
 
 ## Architecture
 - **Hub (`index.html`)**: Fetches `stories/story-index.json` to display available stories.
-- **Reader (`reader.html`)**: The primary interface for reading. It uses URL parameters (e.g., `?story=filename.json`) to determine which story to load.
-- **Logic (`js/reader.js`)**: Fetches the specific story JSON and renders messages sequentially upon user interaction (clicks/taps).
+- **Reader (`reader.html`)**: The primary interface for reading. Includes a notification banner and a story-switching menu.
+- **Logic (`js/reader.js`)**: 
+    - Fetches the specific story JSON.
+    - Renders messages sequentially.
+    - Triggers a "notification pop" for incoming messages (left-side).
+    - Manages the story switching menu.
+    - Sets the page language based on `navigator.language`.
 - **Data (`stories/`)**: Contains the index and individual story files.
 
 ## Getting Started

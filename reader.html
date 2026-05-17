@@ -7,11 +7,28 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="reader-mode">
+    <div id="notification-banner" class="hidden">
+        <div class="notif-content">
+            <img src="" id="notif-avatar" class="avatar">
+            <div class="notif-text">
+                <strong id="notif-name"></strong>
+                <span id="notif-msg"></span>
+            </div>
+        </div>
+    </div>
+
     <div id="reader-container">
         <header id="story-header">
-            <a href="index.html" class="back-link">← Back</a>
+            <a href="index.html" class="back-link">←</a>
             <span id="title-display">Loading...</span>
+            <button id="menu-btn">⋮</button>
         </header>
+
+        <div id="story-menu" class="hidden">
+            <h3>Switch Story</h3>
+            <div id="menu-story-list"></div>
+            <button id="close-menu">Close</button>
+        </div>
 
         <div id="chat-window">
             <!-- Messages appear here -->
