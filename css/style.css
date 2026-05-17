@@ -1,0 +1,161 @@
+:root {
+    --bg-color: #f0f2f5;
+    --bubble-left: #ffffff;
+    --bubble-right: #dcf8c6;
+    --text-main: #333;
+    --text-dim: #888;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+}
+
+/* Home Styles */
+header {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#story-list {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.story-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.read-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+/* Reader Styles */
+.reader-mode {
+    background: #e5ddd5; /* Typical WhatsApp-like background */
+    height: 100vh;
+}
+
+#story-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #075e54;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.back-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 1rem;
+}
+
+#chat-window {
+    padding: 70px 1rem 100px 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.message {
+    max-width: 80%;
+    margin-bottom: 1rem;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.system {
+    align-self: center;
+    background: rgba(0,0,0,0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #555;
+    text-align: center;
+}
+
+.bubble-container {
+    display: flex;
+    align-items: flex-end;
+}
+
+.bubble-container.left { align-self: flex-start; }
+.bubble-container.right { align-self: flex-end; }
+
+.avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 8px;
+}
+
+.bubble-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.left .bubble-content { align-items: flex-start; }
+.right .bubble-content { align-items: flex-end; }
+
+.name {
+    font-size: 0.75rem;
+    color: #666;
+    margin-bottom: 2px;
+}
+
+.bubble {
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+
+.left .bubble {
+    background: var(--bubble-left);
+    border-bottom-left-radius: 2px;
+}
+
+.right .bubble {
+    background: var(--bubble-right);
+    border-bottom-right-radius: 2px;
+}
+
+#tap-overlay {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    pointer-events: none;
+    opacity: 0.7;
+    transition: opacity 0.1s;
+}
+
+#tap-overlay.tapped {
+    opacity: 1;
+}

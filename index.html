@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Fiction Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Chat Fiction Hub</h1>
+        <p>Choose a story to begin</p>
+    </header>
+
+    <main id="story-list">
+        <!-- Stories will be loaded here -->
+    </main>
+
+    <script>
+        fetch('stories/story-index.json')
+            .then(res => res.json())
+            .then(stories => {
+                const list = document.getElementById('story-list');
+                stories.forEach(story => {
+                    const card = document.createElement('div');
+                    card.className = 'story-card';
+                    card.innerHTML = `
+                        <h2>${story.title}</h2>
+                        <p>By ${story.author}</p>
+                        <p>${story.description}</p>
+                        <a href="reader.html?story=${story.file}" class="read-btn">Read Now</a>
+                    `;
+                    list.appendChild(card);
+                });
+            });
+    </script>
+</body>
+</html>

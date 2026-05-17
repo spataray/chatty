@@ -1,0 +1,10 @@
+[
+  {
+    "id": "mystery-at-midnight",
+    "title": "Mystery at Midnight",
+    "author": "GhostWriter",
+    "description": "A strange message arrives on your phone in the middle of the night.",
+    "cover": "assets/covers/mystery.jpg",
+    "file": "mystery-at-midnight.json"
+  }
+]

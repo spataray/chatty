@@ -1,0 +1,26 @@
+{
+  "id": "mystery-at-midnight",
+  "title": "Mystery at Midnight",
+  "characters": {
+    "me": {
+      "name": "Me",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
+      "side": "right"
+    },
+    "stranger": {
+      "name": "Unknown",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Unknown",
+      "side": "left"
+    }
+  },
+  "messages": [
+    { "type": "system", "content": "12:04 AM - Rain is pouring outside." },
+    { "char": "stranger", "text": "Are you awake?" },
+    { "char": "me", "text": "Who is this?" },
+    { "char": "stranger", "text": "Doesn't matter. Look outside your window." },
+    { "char": "me", "text": "Stop joking. I'm calling the police." },
+    { "char": "stranger", "text": "The police won't reach here in time." },
+    { "type": "system", "content": "A loud thud echoes from the hallway." },
+    { "char": "me", "text": "Wait... I heard something." }
+  ]
+}
