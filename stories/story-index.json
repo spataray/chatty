@@ -6,5 +6,21 @@
     "description": "A strange message arrives on your phone in the middle of the night.",
     "cover": "assets/covers/mystery.jpg",
     "file": "mystery-at-midnight.json"
+  },
+  {
+    "id": "the-wrong-number",
+    "title": "The Wrong Number",
+    "author": "Prankster",
+    "description": "A pizza order goes horribly, suspiciously wrong.",
+    "cover": "assets/covers/pizza.jpg",
+    "file": "the-wrong-number.json"
+  },
+  {
+    "id": "deep-sea-discovery",
+    "title": "Deep Sea Discovery",
+    "author": "SciFiFan",
+    "description": "10,000 meters below the surface, something is watching.",
+    "cover": "assets/covers/ocean.jpg",
+    "file": "deep-sea-discovery.json"
   }
 ]

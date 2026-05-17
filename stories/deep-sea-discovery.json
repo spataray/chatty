@@ -1,0 +1,27 @@
+{
+  "id": "deep-sea-discovery",
+  "title": "Deep Sea Discovery",
+  "background": "https://images.unsplash.com/photo-1551244072-5d12893278ab?q=80&w=1000&auto=format&fit=crop",
+  "characters": {
+    "diver": {
+      "name": "Diver Alpha",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Diver",
+      "side": "right"
+    },
+    "base": {
+      "name": "Mission Base",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Base",
+      "side": "left"
+    }
+  },
+  "messages": [
+    { "type": "system", "content": "Location: Mariana Trench - 10,000m" },
+    { "char": "diver", "text": "Base, do you copy? The external lights just flickered." },
+    { "char": "base", "text": "We copy, Alpha. Pressure readings are stable. What do you see?" },
+    { "char": "diver", "text": "There's something... massive moving outside the viewport." },
+    { "char": "base", "text": "Impossible. Nothing that size lives down there." },
+    { "char": "diver", "text": "It just blinked. Base, it has an eye the size of the submersible." },
+    { "char": "base", "text": "Alpha, surface NOW. That's an order." },
+    { "char": "diver", "text": "It's too late. It's following the cable up." }
+  ]
+}

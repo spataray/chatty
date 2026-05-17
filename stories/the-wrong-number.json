@@ -1,0 +1,27 @@
+{
+  "id": "the-wrong-number",
+  "title": "The Wrong Number",
+  "background": "https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=1000&auto=format&fit=crop",
+  "characters": {
+    "me": {
+      "name": "Me",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Felix",
+      "side": "right"
+    },
+    "pizza": {
+      "name": "Pizza Palace?",
+      "avatar": "https://api.dicebear.com/7.x/avataaars/svg?seed=Pizza",
+      "side": "left"
+    }
+  },
+  "messages": [
+    { "type": "system", "content": "Friday, 7:45 PM" },
+    { "char": "pizza", "text": "Is the secret ingredient ready?" },
+    { "char": "me", "text": "Uh... pepperoni?" },
+    { "char": "pizza", "text": "Wait. This isn't Big Tony?" },
+    { "char": "me", "text": "Nope. Just a guy who really wants pizza now." },
+    { "char": "pizza", "text": "Forget you saw this. And definitely don't look in the dumpster behind the parlor." },
+    { "char": "me", "text": "Wait, what's in the dumpster??" },
+    { "char": "pizza", "text": "User has left the chat." }
+  ]
+}
